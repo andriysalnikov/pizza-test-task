@@ -28,8 +28,10 @@
             <td style="width: 100px; text-align: center;">
                 <form th:action="@{/user/update}" method="post">
                     <div style="text-align: center">
-                        <input type="hidden" name="id" th:value="${order.getId()}" />
-                        <input  type="submit" value="Cancel" />
+                        <span th:if="${order.getStatus().status == 'Active'}" >
+                            <input type="hidden" name="id" th:value="${order.getId()}" />
+                            <input type="submit" value="Cancel" />
+                        </span>
                     </div>
                 </form>
             </td>
@@ -41,6 +43,12 @@
             <input  type="submit" value="Create Order" />
         </div>
     </form>
+
+    <script>
+        setTimeout(() => {
+            document.location.reload();
+        }, 1000);
+    </script>
 
 </body>
 </html>
