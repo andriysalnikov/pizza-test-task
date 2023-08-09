@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Orders</title>
+</head>
+<body>
+    <h1 style="text-align:center;">User Orders</h1>
+    <table style="margin: auto;">
+        <tr>
+            <td style="width: 100px; text-align: center; font-weight: bold;">Order ID</td>
+            <td style="width: 150px; text-align: center; font-weight: bold;">Start Date</td>
+            <td style="width: 150px; text-align: center; font-weight: bold;">Start Time</td>
+            <td style="width: 150px; text-align: center; font-weight: bold;">End Date</td>
+            <td style="width: 150px; text-align: center; font-weight: bold;">End Time</td>
+            <td style="width: 100px; text-align: center; font-weight: bold;">Status</td>
+            <td style="width: 100px; text-align: center; font-weight: bold;"></td>
+        </tr>
+    </table><br>
+    <table style="margin: auto;" th:each="order:${orders}">
+        <tr>
+            <td style="width: 100px; text-align: center;" th:text="${order.getId()}"></td>
+            <td style="width: 150px; text-align: center;" th:text="${order.getStartDate()}"></td>
+            <td style="width: 150px; text-align: center;" th:text="${order.getStartTime()}"></td>
+            <td style="width: 150px; text-align: center;" th:text="${order.getEndDate()}"></td>
+            <td style="width: 150px; text-align: center;" th:text="${order.getEndTime()}"></td>
+            <td style="width: 100px; text-align: center;" th:text="${order.getStatus().status}"></td>
+            <td style="width: 100px; text-align: center;">
+                <form th:action="@{/user/update}" method="post">
+                    <div style="text-align: center">
+                        <input type="hidden" name="id" th:value="${order.getId()}" />
+                        <input  type="submit" value="Cancel" />
+                    </div>
+                </form>
+            </td>
+        </tr>
+    </table><br>
+
+    <form th:action="@{/user/create}" method="post">
+        <div style="text-align: center">
+            <input  type="submit" value="Create Order" />
+        </div>
+    </form>
+
+</body>
+</html>
