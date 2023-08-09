@@ -5,10 +5,14 @@ import org.springframework.data.jpa.repository.Query;
 import ua.pp.salnikov.pizzatesttask.model.Order;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface OrderRepository extends JpaRepository<Order, Integer> {
 
     @Query(value = "SELECT * FROM orders WHERE status = 'ACTIVE'", nativeQuery = true)
     List<Order> findAllOrdersWithActiveStatus();
+
+    @Query(value = "SELECT o FROM Order o LEFT JOIN FETCH o.meals m WHERE o.id = :id")
+    Optional<Order> findOrderByIdWithMeals(Integer id);
 
 }

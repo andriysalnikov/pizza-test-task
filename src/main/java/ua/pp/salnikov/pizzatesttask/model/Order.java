@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -23,14 +25,22 @@ public class Order {
     @Column(name = "start_time", nullable = false)
     private LocalTime startTime;
 
-    @Column(name = "end_date", nullable = true)
+    @Column(name = "end_date")
     private LocalDate endDate;
 
-    @Column(name = "end_time", nullable = true)
+    @Column(name = "end_time")
     private LocalTime endTime;
 
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
+
+    @ManyToMany(cascade = { CascadeType.DETACH, CascadeType.REFRESH },
+            fetch = FetchType.LAZY)
+    @JoinTable(name = "orders_meals",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "meal_id"))
+    @OrderBy(value = "id")
+    private final List<Meal> meals = new ArrayList<>();
 
 }

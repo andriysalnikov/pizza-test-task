@@ -16,3 +16,8 @@ CREATE TABLE orders (
     status VARCHAR(10) NOT NULL
 );
 
+CREATE TABLE orders_meals(
+    order_id INT REFERENCES orders(id),
+    meal_id INT REFERENCES meals(id)
+);
+

@@ -11,5 +11,6 @@ public interface OrderService {
     void createOrder();
     void updateOrderByPerformer(Integer id);
     void updateOrderByUser(Integer id);
+    Order getOrderByIdWithMeals(Integer id);
 
 }

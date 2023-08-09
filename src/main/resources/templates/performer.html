@@ -13,6 +13,7 @@
             <td style="width: 150px; text-align: center; font-weight: bold;">Start Time</td>
             <td style="width: 100px; text-align: center; font-weight: bold;">Status</td>
             <td style="width: 100px; text-align: center; font-weight: bold;"></td>
+            <td style="width: 50px; text-align: center; font-weight: bold;"></td>
         </tr>
     </table><br>
     <table style="margin: auto;" th:each="order:${orders}">
@@ -22,6 +23,14 @@
             <td style="width: 150px; text-align: center;" th:text="${order.getStartTime()}"></td>
             <td style="width: 100px; text-align: center;" th:text="${order.getStatus().status}"></td>
             <td style="width: 100px; text-align: center;">
+                <form th:action="@{/order}" method="get">
+                    <div style="text-align: center">
+                        <input type="hidden" name="id" th:value="${order.getId()}" />
+                        <input type="submit" value="Show" />
+                    </div>
+                </form>
+            </td>
+            <td style="width: 50px; text-align: center;">
                 <form th:action="@{/performer/update}" method="post">
                     <div style="text-align: center">
                         <input type="hidden" name="id" th:value="${order.getId()}" />

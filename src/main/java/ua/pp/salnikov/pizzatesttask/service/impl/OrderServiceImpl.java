@@ -54,4 +54,9 @@ public class OrderServiceImpl implements OrderService {
         orderRepository.save(order);
     }
 
+    @Override
+    public Order getOrderByIdWithMeals(Integer id) {
+        Order order = orderRepository.findOrderByIdWithMeals(id).get();
+        return order;
+    }
 }
