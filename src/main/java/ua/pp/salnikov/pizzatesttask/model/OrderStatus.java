@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum OrderStatus {
 
+    NONE("None"),
     ACTIVE("Active"),
     DONE("Done"),
     CANCELED("Canceled");

@@ -19,7 +19,7 @@
         </tr>
     </table><br>
     <table style="margin: auto;" th:each="order:${orders}">
-        <tr>
+        <tr th:if="${order.getStatus().status != 'None'}">
             <td style="width: 100px; text-align: center;" th:text="${order.getId()}"></td>
             <td style="width: 150px; text-align: center;" th:text="${order.getStartDate()}"></td>
             <td style="width: 150px; text-align: center;" th:text="${order.getStartTime()}"></td>
@@ -27,7 +27,7 @@
             <td style="width: 150px; text-align: center;" th:text="${order.getEndTime()}"></td>
             <td style="width: 100px; text-align: center;" th:text="${order.getStatus().status}"></td>
             <td style="width: 100px; text-align: center;">
-                <form th:action="@{/order}" method="get">
+                <form th:action="@{/orders}" method="get">
                     <div style="text-align: center">
                         <input type="hidden" name="id" th:value="${order.getId()}" />
                         <input type="submit" value="Show" />
@@ -35,7 +35,7 @@
                 </form>
             </td>
             <td style="width: 50px; text-align: center;">
-                <form th:action="@{/user/update}" method="post">
+                <form th:action="@{/orders/update-by-user}" method="post">
                     <div style="text-align: center">
                         <span th:if="${order.getStatus().status == 'Active'}" >
                             <input type="hidden" name="id" th:value="${order.getId()}" />
@@ -47,7 +47,7 @@
         </tr>
     </table><br>
 
-    <form th:action="@{/user/create}" method="post">
+    <form th:action="@{/orders/create}" method="post">
         <div style="text-align: center">
             <input  type="submit" value="Create Order" />
         </div>

@@ -9,9 +9,11 @@ public interface OrderService {
 
     List<Order> getAllOrders();
     List<Order> getAllOrdersWithActiveStatus();
-    void createOrder();
+    Order createOrder();
+    void saveOrder(Integer id);
     void updateOrderByPerformer(Integer id);
     void updateOrderByUser(Integer id);
+    void addMealToOrder(Integer orderId, Integer mealId);
     OrderWithMealsDto getOrderByIdWithMeals(Integer id);
 
 }
