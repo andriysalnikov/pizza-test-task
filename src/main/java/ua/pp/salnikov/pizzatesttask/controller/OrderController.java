@@ -56,15 +56,21 @@ public class OrderController {
         return "redirect:/orders/create?&id=" + orderId;
     }
 
-    @PostMapping("/update-by-user")
-    public String updateOrderByUser(@RequestParam("id") Integer id) {
-        orderService.updateOrderByUser(id);
+    @PostMapping("/canceled-by-user")
+    public String cancelOrderByUser(@RequestParam("id") Integer id) {
+        orderService.cancelOrder(id);
         return "redirect:/user";
     }
 
-    @PostMapping("/update-by-performer")
-    public String updateOrderByPerformer(@RequestParam("id") Integer id) {
-        orderService.updateOrderByPerformer(id);
+    @PostMapping("/canceled-by-performer")
+    public String cancelOrderByPerformer(@RequestParam("id") Integer id) {
+        orderService.cancelOrder(id);
+        return "redirect:/performer";
+    }
+
+    @PostMapping("/done-by-performer")
+    public String doOrderByPerformer(@RequestParam("id") Integer id) {
+        orderService.doOrder(id);
         return "redirect:/performer";
     }
 

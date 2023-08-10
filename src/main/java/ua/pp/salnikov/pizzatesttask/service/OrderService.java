@@ -11,8 +11,8 @@ public interface OrderService {
     List<Order> getAllOrdersWithActiveStatus();
     Order createOrder();
     void saveOrder(Integer id);
-    void updateOrderByPerformer(Integer id);
-    void updateOrderByUser(Integer id);
+    void doOrder(Integer id);
+    void cancelOrder(Integer id);
     void addMealToOrder(Integer orderId, Integer mealId);
     OrderWithMealsDto getOrderByIdWithMeals(Integer id);
 

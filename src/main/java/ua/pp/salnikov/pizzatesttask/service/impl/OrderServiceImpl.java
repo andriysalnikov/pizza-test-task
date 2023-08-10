@@ -45,7 +45,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void updateOrderByPerformer(Integer id) {
+    public void doOrder(Integer id) {
         Order order = orderRepository.findById(id).orElseThrow(NoSuchElementException::new);
         order.setEndDate(LocalDate.now());
         order.setEndTime(LocalTime.now());
@@ -54,8 +54,10 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void updateOrderByUser(Integer id) {
+    public void cancelOrder(Integer id) {
         Order order = orderRepository.findById(id).orElseThrow(NoSuchElementException::new);
+        order.setEndDate(LocalDate.now());
+        order.setEndTime(LocalTime.now());
         order.setStatus(OrderStatus.CANCELED);
         orderRepository.save(order);
     }

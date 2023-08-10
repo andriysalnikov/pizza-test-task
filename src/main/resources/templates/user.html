@@ -35,7 +35,7 @@
                 </form>
             </td>
             <td style="width: 50px; text-align: center;">
-                <form th:action="@{/orders/update-by-user}" method="post">
+                <form th:action="@{/orders/canceled-by-user}" method="post">
                     <div style="text-align: center">
                         <span th:if="${order.getStatus().status == 'Active'}" >
                             <input type="hidden" name="id" th:value="${order.getId()}" />
