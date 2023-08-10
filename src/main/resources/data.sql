@@ -17,7 +17,6 @@ INSERT INTO orders (start_date, start_time, end_date, end_time, status)
     VALUES
         (DATE '2023-08-07', TIME '09:00', NULL, NULL, 'ACTIVE'),
         (DATE '2023-08-07', TIME '11:35', DATE '2023-08-07', TIME '12:00', 'DONE'),
-        (DATE '2023-08-07', TIME '11:40', DATE '2023-08-07', TIME '12:00', 'NONE'),
         (DATE '2023-08-07', TIME '11:40', DATE '2023-08-07', TIME '11:45', 'CANCELED');
 
 INSERT INTO orders_meals (order_id, meal_id)
