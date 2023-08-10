@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import ua.pp.salnikov.pizzatesttask.model.Order;
+import ua.pp.salnikov.pizzatesttask.model.dto.OrderWithMealsDto;
 import ua.pp.salnikov.pizzatesttask.service.OrderService;
 
 @Controller
@@ -18,7 +18,7 @@ public class OrderController {
 
     @GetMapping
     public String showOrderWithMeals(@RequestParam("id") Integer id, Model model) {
-        Order order = orderService.getOrderByIdWithMeals(id);
+        OrderWithMealsDto order = orderService.getOrderByIdWithMeals(id);
         model.addAttribute("order", order);
         return "order";
     }
