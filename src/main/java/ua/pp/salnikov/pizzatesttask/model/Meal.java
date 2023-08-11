@@ -1,13 +1,15 @@
 package ua.pp.salnikov.pizzatesttask.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "meals")
-@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Data
 public class Meal {
 
